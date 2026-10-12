@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>AC8 Stick Card</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=IBM+Plex+Sans+Condensed:wght@500;600&family=IBM+Plex+Mono:wght@500;600&display=swap">
+<style>
+/* Layout: one 16:9 SVG card, top-down stick in the centre with colour-coded parts; matching label boxes around it (axes left, hat cross right, base buttons along the bottom). Single dark theme on purpose: low glare on a second monitor beside a game. */
+:root{
+  color-scheme:dark;
+  --bg:#0e1317; --card:#141b20; --outline:#5d6d78; --shell:#1b242a; --ink:#e9eef1; --muted:#8a9aa5;
+  --pink:#e891b8; --orange:#f0a262; --yellow:#e6cf5e; --green:#7ccf98; --cyan:#68c3da; --purple:#a99ae0; --sand:#c8b597; --grey:#7f8d97;
+  --display:"Chakra Petch","Segoe UI",system-ui,sans-serif;
+  --body:"IBM Plex Sans Condensed","Arial Narrow",system-ui,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+}
+html,body{height:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body)}
+[hidden]{display:none!important}
+.wrap{height:100%;box-sizing:border-box;padding-inline:16px;padding-block:12px;display:grid;grid-template-rows:minmax(0,1fr) auto;gap:8px}
+.stage{min-height:0;overflow-x:auto;display:grid;place-items:center}
+.stage svg{display:block;width:100%;height:100%;max-height:calc(100vh - 60px);min-width:860px}
+.bar{display:flex;justify-content:flex-end}
+.fs{font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);background:transparent;border:1px solid #2c3840;border-radius:4px;padding:4px 10px;cursor:pointer}
+.fs:hover{color:var(--ink);border-color:var(--muted)}
+.fs:focus-visible{outline:2px solid var(--yellow);outline-offset:2px}
+
+svg .t{font-family:var(--body);font-weight:600;font-size:21px;fill:var(--ink)}
+svg .tc{text-anchor:middle}
+svg .tag{font-family:var(--mono);font-weight:600;font-size:14px;letter-spacing:.04em}
+svg .cap{font-family:var(--mono);font-weight:500;font-size:13px;letter-spacing:.16em;fill:var(--muted)}
+svg .h1{font-family:var(--display);font-weight:700;font-size:34px;letter-spacing:.04em;fill:var(--ink)}
+svg .h2{font-family:var(--display);font-weight:600;font-size:22px;fill:var(--muted)}
+svg .lead{fill:none;stroke-width:1.6}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <div class="stage">
+    <svg viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Ace Combat 8 controls on a Thrustmaster T.16000M stick, seen from above">
+      <defs>
+        <!-- box: tinted fill + tinted border; colour set per group -->
+        <style>
+          .bx{stroke-width:1.6}
+          .pink .bx{fill:color-mix(in srgb,var(--pink) 20%,var(--card));stroke:var(--pink)} .pink .tag{fill:var(--pink)} .pink.lead,.pink .lead{stroke:var(--pink)}
+          .orange .bx{fill:color-mix(in srgb,var(--orange) 20%,var(--card));stroke:var(--orange)} .orange .tag{fill:var(--orange)} .orange .lead{stroke:var(--orange)}
+          .yellow .bx{fill:color-mix(in srgb,var(--yellow) 18%,var(--card));stroke:var(--yellow)} .yellow .tag{fill:var(--yellow)} .yellow .lead{stroke:var(--yellow)}
+          .green .bx{fill:color-mix(in srgb,var(--green) 20%,var(--card));stroke:var(--green)} .green .tag{fill:var(--green)} .green .lead{stroke:var(--green)}
+          .cyan .bx{fill:color-mix(in srgb,var(--cyan) 20%,var(--card));stroke:var(--cyan)} .cyan .tag{fill:var(--cyan)}
+          .purple .bx{fill:color-mix(in srgb,var(--purple) 22%,var(--card));stroke:var(--purple)} .purple .tag{fill:var(--purple)} .purple .lead{stroke:var(--purple)}
+          .sand .bx{fill:color-mix(in srgb,var(--sand) 16%,var(--card));stroke:var(--sand)} .sand .tag{fill:var(--sand)}
+          .grey .bx{fill:color-mix(in srgb,var(--grey) 18%,var(--card));stroke:var(--grey)} .grey .tag{fill:var(--muted)}
+          .spare .bx{fill:none;stroke:#34424b;stroke-dasharray:5 5} .spare .t{fill:#4d5c66;font-size:17px}
+        </style>
+      </defs>
+
+      <rect width="1600" height="900" rx="18" fill="var(--card)"/>
+
+      <!-- ===== title (top left) ===== -->
+      <g>
+        <rect x="30" y="26" width="440" height="160" rx="8" fill="none" stroke="#2c3840" stroke-width="1.6"/>
+        <text class="h1" x="56" y="82">ACE COMBAT 8</text>
+        <text class="h2" x="56" y="118">Thrustmaster T.16000M stick</text>
+        <text class="cap" x="56" y="160">FLYING · BUILT-IN PRESET · TAG = PAD PROMPT</text>
+      </g>
+
+      <!-- ===== cutscene (top right) ===== -->
+      <g>
+        <rect x="1130" y="26" width="440" height="168" rx="8" fill="none" stroke="#2c3840" stroke-width="1.6"/>
+        <text class="cap" x="1156" y="54">CUTSCENES · BASE LEFT CLUSTER</text>
+        <g class="cyan">
+          <rect class="bx" x="1156" y="68" width="124" height="52" rx="6"/>
+          <text class="t tc" x="1218" y="101" style="font-size:24px">X</text><text class="tag" x="1166" y="86" style="font-size:11px">L1</text>
+          <rect class="bx" x="1288" y="68" width="124" height="52" rx="6"/>
+          <text class="t tc" x="1350" y="101" style="font-size:24px">A</text><text class="tag" x="1298" y="86" style="font-size:11px">L2</text>
+          <rect class="bx" x="1420" y="68" width="124" height="52" rx="6"/>
+          <text class="t tc" x="1482" y="101" style="font-size:24px">B</text><text class="tag" x="1430" y="86" style="font-size:11px">L3</text>
+          <g class="spare"><rect class="bx" x="1156" y="126" width="124" height="52" rx="6"/><text class="t tc" x="1218" y="158">L4</text></g>
+          <rect class="bx" x="1288" y="126" width="124" height="52" rx="6"/>
+          <text class="t tc" x="1350" y="159" style="font-size:24px">Y</text><text class="tag" x="1298" y="144" style="font-size:11px">L5</text>
+          <g class="spare"><rect class="bx" x="1420" y="126" width="124" height="52" rx="6"/><text class="t tc" x="1482" y="158">L6</text></g>
+        </g>
+      </g>
+
+      <!-- ===== stick, top-down ===== -->
+      <!-- base shell -->
+      <path d="M800 228 C930 228 1052 262 1062 360 L1066 620 C1066 700 1000 748 800 748 C600 748 534 700 534 620 L538 360 C548 262 670 228 800 228 Z" fill="var(--shell)" stroke="var(--outline)" stroke-width="2.4"/>
+      <!-- base button clusters: 3 wide x 2 high each side -->
+      <g stroke="var(--outline)" stroke-width="1.4">
+        <g fill="color-mix(in srgb,var(--grey) 55%,var(--shell))">
+          <rect x="572" y="612" width="52" height="38" rx="5"/><rect x="630" y="612" width="52" height="38" rx="5"/><rect x="688" y="612" width="52" height="38" rx="5"/>
+          <rect x="572" y="656" width="52" height="38" rx="5"/><rect x="630" y="656" width="52" height="38" rx="5"/><rect x="688" y="656" width="52" height="38" rx="5"/>
+          <rect x="976" y="612" width="52" height="38" rx="5"/>
+        </g>
+        <g fill="var(--shell)" stroke-dasharray="4 3">
+          <rect x="860" y="612" width="52" height="38" rx="5"/><rect x="918" y="612" width="52" height="38" rx="5"/>
+          <rect x="860" y="656" width="52" height="38" rx="5"/><rect x="918" y="656" width="52" height="38" rx="5"/><rect x="976" y="656" width="52" height="38" rx="5"/>
+        </g>
+      </g>
+      <g class="tag" style="font-size:12px" text-anchor="middle" fill="var(--ink)">
+        <text x="598" y="636">L1</text><text x="656" y="636">L2</text><text x="714" y="636">L3</text>
+        <text x="598" y="680">L4</text><text x="656" y="680">L5</text><text x="714" y="680">L6</text>
+        <text x="1002" y="636">R3</text>
+      </g>
+      <g class="tag" style="font-size:12px" text-anchor="middle" fill="#4d5c66">
+        <text x="886" y="636">R1</text><text x="944" y="636">R2</text>
+        <text x="886" y="680">R4</text><text x="944" y="680">R5</text><text x="1002" y="680">R6</text>
+      </g>
+      <!-- grip (head seen from above) -->
+      <path d="M800 252 C900 252 950 320 948 410 C946 500 900 580 800 586 C700 580 654 500 652 410 C650 320 700 252 800 252 Z" fill="var(--shell)" stroke="var(--outline)" stroke-width="2.4"/>
+      <path d="M800 586 L800 600 M760 600 Q800 640 840 600" fill="none" stroke="var(--outline)" stroke-width="2"/>
+      <!-- trigger (front of grip) -->
+      <rect x="770" y="214" width="60" height="44" rx="14" fill="var(--pink)" stroke="var(--outline)" stroke-width="1.6"/>
+      <!-- head left / right buttons -->
+      <path d="M702 330 Q680 360 690 420 Q700 470 726 470 Q744 440 738 380 Q732 336 702 330 Z" fill="var(--orange)" stroke="var(--outline)" stroke-width="1.6"/>
+      <path d="M898 330 Q920 360 910 420 Q900 470 874 470 Q856 440 862 380 Q868 336 898 330 Z" fill="var(--yellow)" stroke="var(--outline)" stroke-width="1.6"/>
+      <!-- hat -->
+      <circle cx="800" cy="368" r="56" fill="var(--shell)" stroke="var(--outline)" stroke-width="2"/>
+      <circle cx="800" cy="368" r="40" fill="var(--cyan)" stroke="var(--outline)" stroke-width="1.6"/>
+      <circle cx="800" cy="368" r="18" fill="color-mix(in srgb,var(--cyan) 60%,#fff)" stroke="var(--outline)" stroke-width="1.2"/>
+      <!-- thumb button -->
+      <path d="M770 436 L830 436 L836 478 Q800 504 764 478 Z" fill="var(--green)" stroke="var(--outline)" stroke-width="1.6"/>
+      <!-- slider wheel -->
+      <rect x="770" y="652" width="60" height="70" rx="6" fill="var(--purple)" stroke="var(--outline)" stroke-width="1.6"/>
+      <g stroke="color-mix(in srgb,var(--purple) 55%,#000)" stroke-width="2"><line x1="776" y1="668" x2="824" y2="668"/><line x1="776" y1="682" x2="824" y2="682"/><line x1="776" y1="696" x2="824" y2="696"/><line x1="776" y1="710" x2="824" y2="710"/></g>
+
+      <!-- ===== labels around the stick ===== -->
+      <!-- trigger -->
+      <g class="pink">
+        <path class="lead" d="M800 214 L800 104"/>
+        <rect class="bx" x="660" y="38" width="280" height="66" rx="6"/>
+        <text class="t tc" x="800" y="72">Fire machine gun</text>
+        <text class="tag" x="800" y="94" text-anchor="middle">TRIGGER · A</text>
+      </g>
+      <!-- head left -->
+      <g class="orange">
+        <path class="lead" d="M700 340 L660 216"/>
+        <rect class="bx" x="500" y="150" width="236" height="66" rx="6"/>
+        <text class="t tc" x="618" y="184">Change weapon</text>
+        <text class="tag" x="618" y="206" text-anchor="middle">HEAD LEFT · X</text>
+      </g>
+      <!-- head right -->
+      <g class="yellow">
+        <path class="lead" d="M900 340 L940 216"/>
+        <rect class="bx" x="864" y="150" width="236" height="66" rx="6"/>
+        <text class="t tc" x="982" y="184">Change target</text>
+        <text class="tag" x="982" y="206" text-anchor="middle">HEAD RIGHT · Y</text>
+      </g>
+      <!-- thumb -->
+      <g class="green">
+        <path class="lead" d="M800 494 L800 528"/>
+        <rect class="bx" x="666" y="528" width="268" height="66" rx="6"/>
+        <text class="t tc" x="800" y="562">Fire missile / weapon</text>
+        <text class="tag" x="800" y="584" text-anchor="middle">THUMB · B</text>
+      </g>
+      <!-- slider -->
+      <g class="purple">
+        <path class="lead" d="M800 722 L800 734 L1076 734 L1100 700"/>
+        <rect class="bx" x="1100" y="668" width="200" height="62" rx="6"/>
+        <text class="t tc" x="1200" y="700">Throttle</text>
+        <text class="tag" x="1200" y="721" text-anchor="middle">SLIDER · LT / RT</text>
+      </g>
+
+      <!-- ===== axes (left) ===== -->
+      <text class="cap" x="60" y="292">AXES</text>
+      <g class="sand">
+        <rect class="bx" x="60" y="306" width="64" height="64" rx="6"/><text class="t tc" x="92" y="346">X</text>
+        <rect class="bx" x="136" y="306" width="300" height="64" rx="6"/><text class="t" x="156" y="336">Roll</text><text class="tag" x="156" y="358">STICK LEFT / RIGHT · L-STICK</text>
+        <rect class="bx" x="60" y="382" width="64" height="64" rx="6"/><text class="t tc" x="92" y="422">Y</text>
+        <rect class="bx" x="136" y="382" width="300" height="64" rx="6"/><text class="t" x="156" y="412">Pitch</text><text class="tag" x="156" y="434">STICK FWD / BACK · L-STICK</text>
+        <rect class="bx" x="60" y="458" width="64" height="64" rx="6"/><text class="t tc" x="92" y="498">Z</text>
+        <rect class="bx" x="136" y="458" width="300" height="64" rx="6"/><text class="t" x="156" y="488">Yaw</text><text class="tag" x="156" y="510">TWIST GRIP · LB / RB</text>
+      </g>
+
+      <!-- ===== hat cross (right) ===== -->
+      <text class="cap" x="1340" y="292" text-anchor="middle">HAT · WINGMAN ORDERS</text>
+      <g class="cyan">
+        <rect class="bx" x="1240" y="306" width="200" height="64" rx="6"/>
+        <text class="t tc" x="1340" y="336">Forward attack</text><text class="tag" x="1340" y="358" text-anchor="middle">D-PAD ↑</text>
+        <rect class="bx" x="1130" y="382" width="200" height="64" rx="6"/>
+        <text class="t tc" x="1230" y="412">Disperse attack</text><text class="tag" x="1230" y="434" text-anchor="middle">D-PAD ←</text>
+        <rect class="bx" x="1350" y="382" width="200" height="64" rx="6"/>
+        <text class="t tc" x="1450" y="412">SP weapons on/off</text><text class="tag" x="1450" y="434" text-anchor="middle">D-PAD →</text>
+        <rect class="bx" x="1240" y="458" width="200" height="64" rx="6"/>
+        <text class="t tc" x="1340" y="488">Cover</text><text class="tag" x="1340" y="510" text-anchor="middle">D-PAD ↓</text>
+      </g>
+
+      <!-- ===== base buttons (bottom) ===== -->
+      <text class="cap" x="30" y="762">BASE · LEFT CLUSTER</text>
+      <text class="cap" x="1570" y="762" text-anchor="end">BASE · RIGHT CLUSTER</text>
+      <g class="grey">
+        <rect class="bx" x="30" y="776" width="156" height="54" rx="6"/><text class="t tc" x="108" y="801" style="font-size:19px">High-G turn</text><text class="tag tc" x="108" y="821">L1 · LT+RT</text>
+        <rect class="bx" x="194" y="776" width="156" height="54" rx="6"/><text class="t tc" x="272" y="801" style="font-size:19px">Autopilot</text><text class="tag tc" x="272" y="821">L2 · LB+RB</text>
+        <rect class="bx" x="358" y="776" width="156" height="54" rx="6"/><text class="t tc" x="436" y="801" style="font-size:19px">Flares</text><text class="tag tc" x="436" y="821">L3 · L3+R3</text>
+        <rect class="bx" x="30" y="838" width="156" height="54" rx="6"/><text class="t tc" x="108" y="863" style="font-size:19px">Zoom / camera</text><text class="tag tc" x="108" y="883">L4 · R-STICK</text>
+        <rect class="bx" x="194" y="838" width="156" height="54" rx="6"/><text class="t tc" x="272" y="863" style="font-size:19px">Radar map</text><text class="tag tc" x="272" y="883">L5 · BACK</text>
+        <rect class="bx" x="358" y="838" width="156" height="54" rx="6"/><text class="t tc" x="436" y="863" style="font-size:19px">Change view</text><text class="tag tc" x="436" y="883">L6 · R3</text>
+
+        <g class="spare"><rect class="bx" x="1086" y="776" width="156" height="54" rx="6"/><text class="t tc" x="1164" y="809">R1</text></g>
+        <g class="spare"><rect class="bx" x="1250" y="776" width="156" height="54" rx="6"/><text class="t tc" x="1328" y="809">R2</text></g>
+        <rect class="bx" x="1414" y="776" width="156" height="54" rx="6"/><text class="t tc" x="1492" y="801" style="font-size:19px">Pause</text><text class="tag tc" x="1492" y="821">R3 · START</text>
+        <g class="spare"><rect class="bx" x="1086" y="838" width="156" height="54" rx="6"/><text class="t tc" x="1164" y="871">R4</text></g>
+        <g class="spare"><rect class="bx" x="1250" y="838" width="156" height="54" rx="6"/><text class="t tc" x="1328" y="871">R5</text></g>
+        <g class="spare"><rect class="bx" x="1414" y="838" width="156" height="54" rx="6"/><text class="t tc" x="1492" y="871">R6</text></g>
+      </g>
+    </svg>
+  </div>
+  <div class="bar"><button type="button" class="fs" id="fs">Full screen</button></div>
+</div>
+
+<script>
+const fsBtn = document.getElementById("fs");
+if (!document.documentElement.requestFullscreen) fsBtn.hidden = true;
+fsBtn.addEventListener("click", () => {
+  const p = document.fullscreenElement ? document.exitFullscreen() : document.documentElement.requestFullscreen();
+  if (p && p.catch) p.catch(() => { fsBtn.hidden = true; });
+});
+document.addEventListener("fullscreenchange", () => { fsBtn.textContent = document.fullscreenElement ? "Exit full screen" : "Full screen"; });
+</script>
+
+</body>
+</html>
